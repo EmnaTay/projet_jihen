@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Universitaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .user {
+            color: blue;
+        }
+        .bot {
+            color: green;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Chatbot Universitaire</h1>
+        <div id="chat-box">
+            <!-- Messages will appear here -->
+        </div>
+        <textarea id="user-input" rows="3" placeholder="Écrivez votre message ici..."></textarea>
+        <button onclick="sendMessage()">Envoyer</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("user-input").value;
+            if (!userInput.trim()) return;
+
+            // Affiche le message utilisateur dans la boîte de chat
+            const chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<div class="message user"><strong>Vous :</strong> ${userInput}</div>`;
+            document.getElementById("user-input").value = ""; // Réinitialiser la saisie
+
+            try {
+                // Envoi du message à l'API backend
+                const response = await fetch("http://localhost:8080/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ message: userInput })
+                });
+
+                // Vérification de la réponse
+                const data = await response.json();
+                if (response.ok) {
+                    chatBox.innerHTML += `<div class="message bot"><strong>Chatbot :</strong> ${data.response}</div>`;
+                } else {
+                    chatBox.innerHTML += `<div class="message bot"><strong>Erreur :</strong> ${data.error}</div>`;
+                }
+            } catch (error) {
+                chatBox.innerHTML += `<div class="message bot"><strong>Erreur :</strong> Impossible de contacter le serveur.</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
