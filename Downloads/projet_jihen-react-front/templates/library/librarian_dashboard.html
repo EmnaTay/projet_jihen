@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+      .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        border-radius: 35px;
+        font-size: 24px;
+        line-height: 1.33;
+      }
+
+      .btn-circle {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.42857;
+      }
+
+      .jumbotron {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .jumbotron h1 {
+        text-align: center;
+      }
+
+      .options a {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbar.html" %}
+    <br>
+    <br>
+    <center><h3 style="margin-bottom: 0px;" class="alert alert-success">Welcome to Online Library, Librarian!</h3></center>
+
+    <div class="jumbotron" style="margin-bottom: 0px;">
+      <h1 class="display-4">Hello, {{ user.first_name }}!</h1>
+      <p class="lead">You are logged in as a Librarian. You can manage book requests, view issued books, and more.</p>
+      <hr class="my-4">
+      <p>Options Available For You:</p>
+      <div class="options" style="text-align:center">
+        <a href="viewbookrequests" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">View Book Requests</a><br><br>
+        <a href="manageissuedbooks" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Manage Issued Books</a><br><br>
+        <a href="addnewbook" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add New Book</a><br><br>
+        <a href="viewallbooks" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">View All Books</a><br><br>
+        <a href="sendnotifications" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Send Notifications</a><br><br>
+      </div>
+    </div>
+
+    {% include "library/footer.html" %}
+  </body>
+</html>
