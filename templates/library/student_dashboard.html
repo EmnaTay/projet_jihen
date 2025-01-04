@@ -1,0 +1,30 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+{% include "library/navbar.html" %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Hello, {{ user.first_name }}!</h1>
+    <p class="lead">Welcome to the student dashboard.</p>
+    
+    {% if is_ihec_student %}
+        <p class="lead">You are an IHEC student. Enjoy access to IHEC-specific resources!</p>
+        <!-- Content for IHEC students -->
+        <a href="/ihec_resources" class="btn btn-primary">IHEC Resources</a>
+    {% else %}
+        <p class="lead">You are not an IHEC student. Please check out our general student resources.</p>
+        <!-- Content for non-IHEC students -->
+        <a href="/general_resources" class="btn btn-secondary">General Resources</a>
+    {% endif %}
+</div>
+
+{% include "library/footer.html" %}
+</body>
+</html>
