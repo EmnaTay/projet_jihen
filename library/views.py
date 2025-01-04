@@ -8,9 +8,15 @@ from django.contrib.auth.models import Group
 from . import models, forms
 
 
+# library/views.py
+def sample_data(request):
+    # Example logic
+    return HttpResponse("Sample data response")
+
+
 # React's entry point
 def home_view(request):
-    return render(request, "frontend/index.html")
+    return render(request, "library/index.html")
 
 
 # User group checks
@@ -137,3 +143,58 @@ def student_dashboard(request):
         "student_dashboard.html",
         {"is_ihec_student": is_ihec_student, "user": request.user},
     )
+
+
+def adminclick_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/adminclick.html")
+
+
+def studentclick_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/studentclick.html")
+
+
+def adminsignup_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/adminsignup.html")
+
+
+def addbook_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/addbook.html")
+
+
+def viewbook_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/viewbook.html")
+
+
+def issuebook_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/issuebook.html")
+
+
+def viewissuedbook_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/viewissuedbook.html")
+
+
+def viewstudent_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/viewstudent.html")
+
+
+def viewissuedbookbystudent(request):
+    # Your logic for the admin click view
+    return render(request, "library/bookissued.html")
+
+
+def aboutus_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/aboutus.html")
+
+
+def contactus_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/contactus.html")

@@ -8,9 +8,7 @@ class StudentExtra(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     enrollment = models.CharField(max_length=40)
     branch = models.CharField(max_length=40)
-    is_ihec = models.BooleanField(
-        default=False
-    )  # New field to differentiate IHEC students
+    is_ihec = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.first_name + " [" + str(self.enrollment) + "]"
