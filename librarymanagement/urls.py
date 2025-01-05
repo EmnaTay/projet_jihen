@@ -30,6 +30,7 @@ urlpatterns = [
     path("api/sample-data/", sample_data),
     path("adminclick", views.adminclick_view),
     path("studentclick", views.studentclick_view),
+    path("librarianclick", views.librarianclick_view),
     path("adminsignup", views.adminsignup_view),
     path("studentsignup", views.studentsignup_view),
     path("adminlogin", LoginView.as_view(template_name="library/adminlogin.html")),
@@ -43,5 +44,6 @@ urlpatterns = [
     path("viewstudent", views.viewstudent_view),
     path("viewissuedbookbystudent", views.viewissuedbookbystudent),
     path("aboutus", views.aboutus_view),
+    path("front_chatbot", views.frontchatbot_view),
     path("contactus", views.contactus_view),
 ]

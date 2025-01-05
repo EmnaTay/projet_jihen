@@ -160,6 +160,11 @@ def adminsignup_view(request):
     return render(request, "library/adminsignup.html")
 
 
+def librarianclick_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/librarianclick.html")
+
+
 def addbook_view(request):
     # Your logic for the admin click view
     return render(request, "library/addbook.html")
@@ -188,6 +193,11 @@ def viewstudent_view(request):
 def viewissuedbookbystudent(request):
     # Your logic for the admin click view
     return render(request, "library/bookissued.html")
+
+
+def frontchatbot_view(request):
+    # Your logic for the admin click view
+    return render(request, "library/front_chatbot.html")
 
 
 def aboutus_view(request):
